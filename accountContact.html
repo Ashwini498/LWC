@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Account and Contact Creation">
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-wrap slds-gutters">
+                <!-- Account Section -->
+                <div class="slds-col slds-size_1-of-2">
+                    <h3>Account creating</h3>
+                    <lightning-input label="Account Name" value={accountName} onchange={handleAccountChange} data-id="accountName"> </lightning-input>
+                    <lightning-combobox label="Rating" value={rating} options={ratingPicklistValues} placeholder="Select Rating" onchange={handleAccountChange} data-id="rating"> </lightning-combobox>
+            <lightning-combobox label="Industry" value={industry} options={industryPicklistValues} placeholder="Select Industry" onchange={handleAccountChange} data-id="industry"> </lightning-combobox>
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="slds-col slds-size_1-of-2">
+                    <h3>Contact Creating</h3>
+                    <lightning-input label="First Name" value={firstName} onchange={handleInputChange} data-id="firstName"></lightning-input>
+                    <lightning-input label="Last Name" value={lastName} onchange={handleInputChange} data-id="lastName"></lightning-input>
+                    <lightning-input label="Email" value={email} onchange={handleInputChange} data-id="email"></lightning-input>
+                    <lightning-input label="Phone" value={phone} onchange={handleInputChange} data-id="phone"> </lightning-input>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="slds-m-top_medium">
+                <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button>
+            </div>
+            <template if:true={message}>
+                <p class="'slds-text-color_success slds-m-top_medium">{message}</p>
+            </template>
+            <template if:true={error}>
+                <p class="slds-text-color_error slds-m-top_medium">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
