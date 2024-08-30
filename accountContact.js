@@ -3,6 +3,7 @@ import createAccount from '@salesforce/apex/accountContr.createAccount';
 import createContact from '@salesforce/apex/contactContr.createContact';
 import { NavigationMixin } from 'lightning/navigation';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import RATING_FIELD from '@salesforce/schema/Account.Rating';
 import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
@@ -81,6 +82,13 @@ export default class AccountContact extends NavigationMixin(LightningElement) {
         .then(Contact => {
             this.message = 'Account and Contact created successfully!';
             this.error = undefined;
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: this.message,
+                    variant: 'success',
+                })
+                );
 
             this[NavigationMixin.Navigate]({
                 type: 'standard__recordPage',
@@ -94,6 +102,14 @@ export default class AccountContact extends NavigationMixin(LightningElement) {
         .catch(error => {
             this.error = error.body.message;
             this.message = undefined;
+
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error Creating records',
+                    message: this.error,
+                    variant: 'error',
+                })
+                );
         });
     }
     navigationToRecordPage(recordId){
