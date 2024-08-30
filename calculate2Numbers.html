@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title = "Calculator">
+   <div class= "slds-p-around_medium" >
+    <div>
+        <label>First Number:</label>
+        <input type="number" name="fstNumber" onchange={handleChange}/>
+    </div>
+    <div>
+        <label>Second Number:</label>
+        <input type="number" name="scdNumber" onchange={handleChange}/>
+    </div>
+    <div>
+        <button onclick={handleSum}>Sum</button>
+        <button onclick={handleSub}>Subtract</button>
+        <button onclick={handleMul}>Multiply</button>
+    </div>
+    <div>
+        <p>Result: {result}</p>
+    </div>
+    <div if:true={errors}>
+        <p>Error: {errors}</p>
+    </div>
+</div>
+</lightning-card>  
+</template>
