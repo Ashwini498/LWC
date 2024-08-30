@@ -8,7 +8,6 @@ import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import RATING_FIELD from '@salesforce/schema/Account.Rating';
 import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
 
-
 export default class AccountContact extends NavigationMixin(LightningElement) {
     @track accountName = '';
     @track industry = '';
